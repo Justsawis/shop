@@ -22,7 +22,6 @@ public class OrderService {
         orderRto.setList(list);
         return orderRto;
     }
-
     public List getOrderDetail(Integer orderId) {
         return orderMapper.getOrderDetail(orderId);
     }
