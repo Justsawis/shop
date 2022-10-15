@@ -4,6 +4,26 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lanxuan.order.mapper.OrderMapper">
     <select id="getMoneyById" resultType="com.lanxuan.order.info.OrderBase" parameterType="java.lang.Integer">
-        select id,user_id as userId,money from order_base where id=#{id};
+        select id, user_id as userId, money
+        from order_base
+        where id = #{id};
     </select>
+
+
+    <resultMap id="detailResult" type="com.lanxuan.order.info.OrderDetail">
+
+        <id column="id" jdbcType="INTEGER" javaType="java.lang.Integer" property="id"/>
+        <result column="order_id" jdbcType="INTEGER" javaType="java.lang.Integer" property="orderId"/>
+        <result column="product_id" jdbcType="INTEGER" javaType="java.lang.Integer" property="productId"/>
+        <result column="number" jdbcType="INTEGER" javaType="java.lang.Integer" property="number"/>
+
+    </resultMap>
+
+
+    <select id="getOrderDetail" resultMap="detailResult" parameterType="java.lang.Integer">
+        SELECT *
+        FROM order_detail
+        where order_id = #{orderId};
+    </select>
+
 </mapper>

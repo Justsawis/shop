@@ -1,6 +1,7 @@
 package com.lanxuan.order.controller;
 
 import com.lanxuan.order.info.OrderBase;
+import com.lanxuan.order.info.OrderRto;
 import com.lanxuan.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,8 +16,9 @@ public class OrderController {
     OrderService orderService;
 
     @GetMapping("getMoney")
-    public @ResponseBody OrderBase getMoney(Integer id){
-        return orderService.getMoney(id);
+    public @ResponseBody OrderRto getMoney(Integer id) {
+        OrderRto rto = orderService.getMoney(id);
+        return rto;
     }
 
     @GetMapping("getTest")
